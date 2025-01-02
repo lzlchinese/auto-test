@@ -29,14 +29,14 @@ jobs:
           path: generated_data.xlsx
 
       - name: Send email on success
-        if: success()  # This ensures the email is only sent if the previous steps succeed
-        uses: mschwarz/send-mail@v1
+        if: success()
+        uses: dawidd6/action-send-mail@v2
         with:
-          smtp-server: smtp.qq.com
-          smtp-port: 587
-          smtp-username: ${{ secrets.EMAIL_USERNAME }}  # GitHub Secrets for email username
-          smtp-password: ${{ secrets.EMAIL_PASSWORD }}  # GitHub Secrets for email password
-          to: 1761997923@qq.com  # Email recipient
-          from: ${{ secrets.EMAIL_USERNAME }}  # The sender email (use the same as SMTP username)
-          subject: "GitHub Actions Workflow Succeeded"
-          body: "The workflow has completed successfully."
+          smtp-server: smtp.qq.com  # SMTP 服务器
+          smtp-port: 587  # SMTP 端口号，587 支持 TLS 加密
+          smtp-username: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱用户名
+          smtp-password: ${{ secrets.EMAIL_PASSWORD }}  # 发件人邮箱授权码
+          to: 1761997923@qq.com  # 收件人邮箱
+          from: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱
+          subject: "GitHub Actions Workflow Succeeded"  # 邮件主题
+          body: "The workflow has completed successfully."  # 邮件内容
