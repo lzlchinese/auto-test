@@ -36,15 +36,15 @@ jobs:
             output.json
             output.html
 
-      # - name: Send email on success
-      #   if: success()
-      #   uses: dawidd6/action-send-mail@v2
-      #   with:
-      #     smtp-server: smtp.qq.com  # SMTP 服务器
-      #     smtp-port: 587  # SMTP 端口号，587 支持 TLS 加密
-      #     smtp-username: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱用户名
-      #     smtp-password: ${{ secrets.EMAIL_PASSWORD }}  # 发件人邮箱授权码
-      #     to: 1761997923@qq.com  # 收件人邮箱
-      #     from: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱
-      #     subject: "GitHub Actions Workflow Succeeded"  # 邮件主题
-      #     body: "The workflow has completed successfully." 
+      - name: Send email on success
+        if: success()
+        uses: dawidd6/action-send-mail@v2
+        with:
+          smtp-server: smtp.qq.com  # SMTP 服务器
+          smtp-port: 587  # SMTP 端口号，587 支持 TLS 加密
+          smtp-username: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱用户名
+          smtp-password: ${{ secrets.EMAIL_PASSWORD }}  # 发件人邮箱授权码
+          to: 1761997923@qq.com  # 收件人邮箱
+          from: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱
+          subject: "GitHub Actions Workflow Succeeded"  # 邮件主题
+          body: "The workflow has completed successfully." 
