@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "90ad4fd9-c722-46c9-a5a8-541d09898f4d",
+		"name": "API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "case1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.openapijs.com/api/user",
+					"protocol": "https",
+					"host": [
+						"www",
+						"openapijs",
+						"com"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
