@@ -17,12 +17,15 @@ jobs:
           node-version: "16" # newman: required node version >=16
 
       - name: Install newman
-        run: npm install -g newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-html
 
       # Run Postman collection using newman
       - name: newman run collection.json
         run: |
           newman run apiFiles/API.postman_collection.json -r json,html --reporter-json-export output.json --reporter-html-export output.html
+          ls -l
 
       # Upload the output files as artifacts
       - name: Upload Postman report artifacts
