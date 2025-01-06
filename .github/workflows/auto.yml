@@ -45,7 +45,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}  # 从 Secrets 中读取 QQ 邮箱地址
           password: ${{ secrets.EMAIL_PASSWORD }}  # 从 Secrets 中读取授权码
           from: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱地址
-          to: recipient-email@qq.com  # 收件人邮箱地址
+          to: ${{ secrets.EMAIL_USERNAME }}   # 收件人邮箱地址
           subject: "GitHub Actions Email Test"
           body: "This is a test email sent by GitHub Actions."
           secure: true  # 使用 SSL/TLS
