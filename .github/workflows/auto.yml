@@ -2,11 +2,6 @@ name: CI Pipeline
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -19,10 +14,37 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: "16" # newman: required node version >=16
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-html
 
-      - name: Run tests
-        run: npm test
+      # Run Postman collection using newman
+      - name: newman run collection.json
+        run: |
+          newman run apiFiles/API.postman_collection.json -r json,html --reporter-json-export output.json --reporter-html-export output.html
+          ls -l
+
+      # Upload the output files as artifacts
+      - name: Upload Postman report artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: postman-reports
+          path: |
+            output.json
+            output.html
+
+      # - name: Send email on success
+      #   if: success()
+      #   uses: dawidd6/action-send-mail@v2
+      #   with:
+      #     smtp-server: smtp.qq.com  # SMTP 服务器
+      #     smtp-port: 587  # SMTP 端口号，587 支持 TLS 加密
+      #     smtp-username: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱用户名
+      #     smtp-password: ${{ secrets.EMAIL_PASSWORD }}  # 发件人邮箱授权码
+      #     to: 1761997923@qq.com  # 收件人邮箱
+      #     from: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱
+      #     subject: "GitHub Actions Workflow Succeeded"  # 邮件主题
+      #     body: "The workflow has completed successfully." 
