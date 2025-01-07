@@ -3,7 +3,7 @@ name: CI Pipeline
 on:
   push:
   schedule:
-    - cron: '0 11 * * *'  # 每天早上 9 点触发一次
+    - cron: '0 4 * * *'  # 每天早上 9 点触发一次
 
 jobs:
   build:
