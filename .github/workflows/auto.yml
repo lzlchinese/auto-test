@@ -24,8 +24,7 @@ jobs:
       # Run Postman collection using newman
       - name: newman run collection.json
         run: |
-          newman run apiFiles/API.postman_collection.json -r json,html --reporter-json-export output.json --reporter-html-export output.html
-          ls -l
+          newman run apiFiles/API.postman_collection.json -e apiFiles/openapijs.postman_environment.json -r json,html --reporter-json-export output.json --reporter-html-export output.html
 
       # Upload the output files as artifacts
       - name: Upload Postman report artifacts

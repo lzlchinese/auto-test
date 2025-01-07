@@ -40,12 +40,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://www.openapijs.com/api/user",
+					"raw": "https://{{host}}/api/user",
 					"protocol": "https",
 					"host": [
-						"www",
-						"openapijs",
-						"com"
+						"{{host}}"
 					],
 					"path": [
 						"api",
