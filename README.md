@@ -10,3 +10,7 @@ pm.test("Response status is 200", function () {
 });
 ```
 ## （3）导出collection文件
+## （4）git push origin branch
+
+# 2. github action
+## （1）auto.yml文件有跑测试，生成测试报告，发送邮件通知
