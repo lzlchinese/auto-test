@@ -6,9 +6,11 @@ on:
     - cron: '0 1 * * *'  # 每天早上 9 点触发一次
 
 jobs:
-  build:
+  run-newman-tests:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        collection: [openapijs, github]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -16,29 +18,33 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "16" # newman: required node version >=16
+          node-version: "16" # newman: 需要 node 版本 >=16
 
       - name: Install newman
         run: |
           npm install -g newman
           npm install -g newman-reporter-html
 
-      # Run Postman collection using newman
-      - name: newman run collection.json
+      # 使用Newman执行多个collection文件
+      - name: Run Postman collection
         run: |
-          newman run apiFiles/API.postman_collection.json -e apiFiles/openapijs.postman_environment.json -r json,html --reporter-json-export output.json --reporter-html-export output.html
+          newman run apiFiles/${{ matrix.collection }}.postman_collection.json -e apiFiles/${{ matrix.collection }}.postman_environment.json -r json,html --reporter-json-export output-${{ matrix.collection }}.json --reporter-html-export output-${{ matrix.collection }}.html
 
-      # Upload the output files as artifacts
+      # 生成的文件
       - name: Upload Postman report artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: postman-reports
+          name: postman-reports-${{ matrix.collection }} # 给每个集合生成不同的artifact名称
           path: |
-            output.json
-            output.html
-
+            output-${{ matrix.collection }}.json
+            output-${{ matrix.collection }}.html
+  send-email-success:
+    runs-on: ubuntu-latest
+    needs: run-newman-tests  # 表示这个作业依赖于 run-newman-tests 作业
+    if: success()
+    steps:
+      # 发送邮件
       - name: Send email on success
-        if: success()
         uses: dawidd6/action-send-mail@v2
         with:
           server_address: smtp.qq.com
@@ -53,8 +59,12 @@ jobs:
             https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           secure: true  # 使用 SSL/TLS
 
+  send-email-failure:
+    runs-on: ubuntu-latest
+    needs: run-newman-tests  # 表示这个作业依赖于 run-newman-tests 作业
+    if: failure()
+    steps:
       - name: Send email on failure
-        if: failure()
         uses: dawidd6/action-send-mail@v2
         with:
           server_address: smtp.qq.com
