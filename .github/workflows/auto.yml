@@ -6,7 +6,7 @@ on:
     - cron: '0 1 * * *'  # 每天早上 9 点触发一次
 
 jobs:
-  newman:
+  run-newman-tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
