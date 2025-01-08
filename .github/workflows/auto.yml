@@ -47,8 +47,10 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}  # 从 Secrets 中读取授权码
           from: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱地址
           to: ${{ secrets.EMAIL_USERNAME }}   # 收件人邮箱地址
-          subject: "GitHub Actions Email Test"
-          body: "This is a test email sent by GitHub Actions."
+          subject: "每日测试运行成功"
+          body: |
+            测试成功，请查看以下链接获取详细信息：
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           secure: true  # 使用 SSL/TLS
 
       - name: Send email on failure
@@ -61,6 +63,8 @@ jobs:
           password: ${{ secrets.EMAIL_PASSWORD }}  # 从 Secrets 中读取授权码
           from: ${{ secrets.EMAIL_USERNAME }}  # 发件人邮箱地址
           to: ${{ secrets.EMAIL_USERNAME }}   # 收件人邮箱地址
-          subject: "GitHub Actions Email Test"
-          body: "测试失败，请查看。"
+          subject: "每日测试运行失败"
+          body: |
+            测试失败，请查看以下链接获取详细信息：
+            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           secure: true  # 使用 SSL/TLS
