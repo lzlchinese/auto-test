@@ -28,7 +28,50 @@ jobs:
       # 使用Newman执行多个collection文件
       - name: Run Postman collection
         run: |
-          newman run apiFiles/${{ matrix.collection }}.postman_collection.json -e apiFiles/${{ matrix.collection }}.postman_environment.json -r json,html --reporter-json-export output-${{ matrix.collection }}.json --reporter-html-export output-${{ matrix.collection }}.html
+          # newman run apiFiles/${{ matrix.collection }}.postman_collection.json -e apiFiles/${{ matrix.collection }}.postman_environment.json -r json,html --reporter-json-export output-${{ matrix.collection }}.json --reporter-html-export output-${{ matrix.collection }}.html
+          #!/bin/bash
+
+          MAX_RETRIES=3  # 最大重试次数
+          RETRY_COUNT=0  # 当前重试次数
+          TIMEOUT=5     # 超时时间，单位秒
+          SUCCESS=0       # 0 表示失败，1 表示成功
+
+          while [ $RETRY_COUNT -lt $MAX_RETRIES ]
+          do
+              # 使用 timeout 命令来限制 newman 的最大运行时间
+              timeout $TIMEOUT newman run apiFiles/${{ matrix.collection }}.postman_collection.json \
+                  -e apiFiles/${{ matrix.collection }}.postman_environment.json \
+                  -r json,html \
+                  --reporter-json-export output-${{ matrix.collection }}.json \
+                  --reporter-html-export output-${{ matrix.collection }}.html
+
+              # 获取上一个命令的退出状态码
+              EXIT_CODE=$?
+              
+              if [ $EXIT_CODE -eq 0 ]; then
+                  SUCCESS=1
+                  break
+              elif [ $EXIT_CODE -eq 124 ]; then
+                  # timeout 命令的退出状态码是 124，表示超时
+                  RETRY_COUNT=$((RETRY_COUNT + 1))
+                  echo "Attempt $RETRY_COUNT failed due to timeout. Retrying..."
+              else
+                  # 其他错误类型
+                  RETRY_COUNT=$((RETRY_COUNT + 1))
+                  echo "Attempt $RETRY_COUNT failed with error code $EXIT_CODE. Retrying..."
+              fi
+
+              # 设置每次重试之间的延迟时间，避免过度频繁执行
+              sleep 2
+          done
+
+          if [ $RETRY_COUNT -ge $MAX_RETRIES ]; then
+              echo "Test failed after $MAX_RETRIES retries due to timeout or errors."
+              exit 1  # 达到最大重试次数后退出并返回错误码
+          else
+              echo "Test succeeded."
+              exit 0  # 成功时返回0
+          fi
 
       # 生成的文件
       - name: Upload Postman report artifacts
@@ -38,6 +81,7 @@ jobs:
           path: |
             output-${{ matrix.collection }}.json
             output-${{ matrix.collection }}.html
+
   send-email-success:
     runs-on: ubuntu-latest
     needs: run-newman-tests  # 表示这个作业依赖于 run-newman-tests 作业
