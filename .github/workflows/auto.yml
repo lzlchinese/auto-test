@@ -1,7 +1,7 @@
 name: CI Pipeline
 
 on:
-  push: # 测试的时候才放开
+  # push: # 测试的时候才放开
   schedule:
     - cron: '0 1 * * *'  # 每天早上 9 点触发一次
 
