@@ -52,6 +52,438 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "case2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/api/user",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "case3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/api/user",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "case4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/api/user",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "case5",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/api/user",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "case6",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/api/user",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "case7",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/api/user",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "case8",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/api/user",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "case9",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/api/user",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "case10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data name is '埃隆・马斯克'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.name', '埃隆・马斯克');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data year is 1971\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.year', 1971);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data sex is '男'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.sex', '男');\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Data nationality includes '南非、加拿大、美国'\", function () {\r",
+							"    pm.response.to.have.jsonBody('data.nationality', '南非、加拿大、美国');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://{{host}}/api/user",
+					"protocol": "https",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

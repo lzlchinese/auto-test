@@ -1,7 +1,7 @@
 name: CI Pipeline
 
 on:
-  push:
+  # push: # 测试的时候才放开
   schedule:
     - cron: '0 1 * * *'  # 每天早上 9 点触发一次
 
@@ -38,6 +38,7 @@ jobs:
           path: |
             output-${{ matrix.collection }}.json
             output-${{ matrix.collection }}.html
+
   send-email-success:
     runs-on: ubuntu-latest
     needs: run-newman-tests  # 表示这个作业依赖于 run-newman-tests 作业
@@ -56,7 +57,7 @@ jobs:
           subject: "每日测试运行成功"
           body: |
             测试成功，请查看以下链接获取详细信息：
-            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">点击这里查看详细信息</a>
           secure: true  # 使用 SSL/TLS
 
   send-email-failure:
@@ -76,5 +77,5 @@ jobs:
           subject: "每日测试运行失败"
           body: |
             测试失败，请查看以下链接获取详细信息：
-            https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+            <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">点击这里查看详细信息</a>
           secure: true  # 使用 SSL/TLS

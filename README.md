@@ -1,5 +1,5 @@
 # auto-test
-本项目是使用了postman + newman + GitHub action去每日自动化测试
+## 本项目是使用了postman + newman + GitHub action去每日自动化测试
 
 # 1. postman
 ## （1）准备好可以发送正常的接口
@@ -14,4 +14,9 @@ pm.test("Response status is 200", function () {
 ## （5）git push origin branch
 
 # 2. github action
-## （1）auto.yml文件有跑测试，生成测试报告，发送邮件通知和每天定时发送成功或者失败邮件。
+## 每天定时发送测试成功或者失败邮件，含有测试结果报告
+
+# 3. issues
+## （1）虽然设置的为早上9点，但是10点20左右才会运行
+## （2）现在只支持QQ邮箱
+## （3）newman ... -r json,html ... 这个只会生成结果文件，但是如果测试失败没有任何的文件产出和case失败详情
